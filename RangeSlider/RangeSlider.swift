@@ -123,7 +123,7 @@ public class RangeSlider: UIControl {
     }
     
     var gapBetweenThumbs: Double {
-        return 0.5 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
+        return 0.3 * Double(thumbWidth) * (maximumValue - minimumValue) / Double(bounds.width)
     }
     
     @IBInspectable public var trackTintColor: UIColor = UIColor(white: 0.9, alpha: 1.0) {
@@ -230,11 +230,17 @@ public class RangeSlider: UIControl {
         trackLayer.setNeedsDisplay()
         
         let lowerThumbCenter = CGFloat(positionForValue(lowerValue))
-        lowerThumbLayer.frame = CGRect(x: lowerThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
+        lowerThumbLayer.frame = CGRect(x: lowerThumbCenter - thumbWidth/2.0 - 5.0,
+                                       y: 0.0,
+                                       width: thumbWidth,
+                                       height: thumbWidth)
         lowerThumbLayer.setNeedsDisplay()
         
         let upperThumbCenter = CGFloat(positionForValue(upperValue))
-        upperThumbLayer.frame = CGRect(x: upperThumbCenter - thumbWidth/2.0, y: 0.0, width: thumbWidth, height: thumbWidth)
+        upperThumbLayer.frame = CGRect(x: upperThumbCenter - thumbWidth/2.0 + 5.0,
+                                       y: 0.0,
+                                       width: thumbWidth,
+                                       height: thumbWidth)
         upperThumbLayer.setNeedsDisplay()
         
         CATransaction.commit()
